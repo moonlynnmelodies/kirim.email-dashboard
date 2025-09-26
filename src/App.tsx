@@ -1,10 +1,14 @@
 // import Header from './components/Header/Header';
 // import LandingPage from './pages/LandingPage';
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Popup from "./components/Popup";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
+import Domain from "./pages/Domain/Domain";
 import Mailbox from "./pages/Mailbox";
+import NewDomain from "./pages/Domain/NewDomain"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 
 const App: React.FC = () => {
@@ -15,6 +19,8 @@ const App: React.FC = () => {
          <div className="flex-1 bg-gray-100 min-h-screen p-6">
            <Routes>
              <Route path="/dashboard" element={<Dashboard />} />
+             <Route path="/domain" element={<Domain />} />
+             <Route path="/domain/new" element={<NewDomain />} />
              <Route path="/mailbox" element={<Mailbox />} />
              {/* <Route path="/profile" element={<Profile />} />
              <Route path="/settings" element={<Settings />} /> */}
@@ -22,6 +28,7 @@ const App: React.FC = () => {
          </div>
        </div>
      </Router>
+
     
     // <div className="background-container">
     //   <div className="content-container">
