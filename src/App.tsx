@@ -8,6 +8,7 @@ import Domain from "./pages/Domain/Domain";
 import Mailbox from "./pages/Mailbox";
 import MailboxDetail from "./pages/MailboxDetail";
 import NewDomain from "./pages/Domain/NewDomain"
+import Invoice from "./pages/Billing/Invoice";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
              <Route path="/domain/new" element={<NewDomain />} />
              <Route path="/mailbox" element={<Mailbox />} />
              <Route path="/mailbox/:id" element={<MailboxDetail />} />
+             <Route path="/invoice" element={<Invoice />} />
              {/* <Route path="/profile" element={<Profile />} />
              <Route path="/settings" element={<Settings />} /> */}
            </Routes>
