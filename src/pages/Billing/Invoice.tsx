@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Popup from "../../components/Popup";
+import { Dropdown, DropdownButton, DropdownItem, DropdownMenu } from '../../components/Dropdown';
+import DropdownSearch from "../../components/DropdownSearch";
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { sampleData } from "../../data/sampleData";
+
 
 const Invoice: React.FC = () => {
+  //dropdown
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+
   const [invoiceList, setInvoiceList] = useState([
     {
       id: 1,
@@ -67,6 +76,10 @@ const Invoice: React.FC = () => {
     setIsOpen(false);
   };
 
+
+
+  // const [billingListState, setBillingListState] = useState(sampleData);
+
   return (
     <div>
       {/* Top search bar */}
@@ -98,6 +111,36 @@ const Invoice: React.FC = () => {
           />
         </div>
       </div>
+
+      {/* Dropdown Filter Bar */}
+      <p className="mt-6 text-gray-500 text-sm"> Select Organization </p>
+      <div className="mt-1 bg-white rounded-md flex justify-start items-center h-10 shadow-sm">
+        <DropdownSearch
+          options={sampleData.map(b => b.organization)}
+          placeholder="Please choose an organization"
+          onSelect={(value) => {
+            console.log("Selected:", value);
+            // kalau mau update state dropdown lain bisa di sini
+            setIsDropdownOpen(false);
+          }}
+        />
+
+        {/* <Dropdown>
+          <DropdownButton onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            Options
+            <ChevronDownIcon className="w-4 h-4 ml-2" />
+          </DropdownButton>
+          {isDropdownOpen && (
+            <DropdownMenu>
+              <DropdownItem onClick={() => console.log("View")}>View</DropdownItem>
+              <DropdownItem onClick={() => console.log("Edit")}>Edit</DropdownItem>
+              <DropdownItem onClick={() => console.log("Delete")}>Delete</DropdownItem>
+            </DropdownMenu>
+          )}
+        </Dropdown> */}
+      </div>
+
+
 
       {/* Invoice Table */}
       <div className="mt-7 bg-white p-4 rounded-md shadow-sm">
