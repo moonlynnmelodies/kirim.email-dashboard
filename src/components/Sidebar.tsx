@@ -52,14 +52,14 @@ const Sidebar = () => {
             <ul className="ml-4 mt-1 space-y-1">
               <li>
                 <Link
-                  to="/domain"
+                  to="/domain/management"
                   className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
-                  Domain List
+                  Management
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/domain/new"
                   className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
@@ -67,7 +67,7 @@ const Sidebar = () => {
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   New Domain
                 </Link>
-              </li>
+              </li> */}
             </ul>
           )}
         </li>
@@ -101,14 +101,14 @@ const Sidebar = () => {
             <ul className="ml-4 mt-1 space-y-1">
               <li>
                 <Link
-                  to="/mailbox"
+                  to="/mailbox/management"
                   className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Management
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/mailbox/new"
                   className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
@@ -116,16 +116,97 @@ const Sidebar = () => {
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   New Mailbox
                 </Link>
+              </li> */}
+            </ul>
+          )}
+        </li>
+        
+
+        {/* Security dropdown */}
+        <li>
+          <button
+            onClick={() => toggleDropdown("security")}
+            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+          >
+            <span className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+              </svg>
+
+              Security & Spam
+            </span>
+            
+            <svg
+              className={`w-4 h-4 transition-transform ${
+                openDropdown === "security" ? "rotate-90" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          {openDropdown === "security" && (
+            <ul className="ml-4 mt-1 space-y-1">
+              <li>
+                <Link
+                  to="/security/management"
+                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                >
+                  <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
+                  Management
+                </Link>
               </li>
             </ul>
           )}
         </li>
 
-        {/* <li>
-          <Link to="/mailbox" className="block p-2 hover:bg-blue-200 rounded cursor-pointer">
-            Mailbox
-          </Link>
-        </li> */}
+        {/* Monitoring and Reports dropdown */}
+        <li>
+          <button
+            onClick={() => toggleDropdown("monitoringAndReports")}
+            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+          >
+            <span className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+              </svg>
+
+              Monitoring & Reports
+            </span>
+            
+            <svg
+              className={`w-4 h-4 transition-transform ${
+                openDropdown === "monitoringAndReports" ? "rotate-90" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          {openDropdown === "monitoringAndReports" && (
+            <ul className="ml-4 mt-1 space-y-1">
+              <li>
+                <Link
+                  to="/monitoring-and-reports/management"
+                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                >
+                  <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
+                  Management
+                </Link>
+              </li>
+             
+            </ul>
+          )}
+        </li>
+
+        
+
 
         {/* Billing dropdown */}
         <li>
@@ -170,6 +251,57 @@ const Sidebar = () => {
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Invoice
+                </Link>
+              </li>
+            </ul>
+          )}
+        </li>
+
+
+        {/* Developer Menu dropdown */}
+        <li>
+          <button
+            onClick={() => toggleDropdown("developerMenu")}
+            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+          >
+            <span className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+              </svg>
+
+              Developer Menu
+            </span>
+            
+            <svg
+              className={`w-4 h-4 transition-transform ${
+                openDropdown === "developerMenu" ? "rotate-90" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          {openDropdown === "developerMenu" && (
+            <ul className="ml-4 mt-1 space-y-1">
+              <li>
+                <Link
+                  to="/developer-menu/account-setting"
+                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                >
+                  <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
+                  Account Setting
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/menu/new"
+                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                >
+                  <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
+                  Register
                 </Link>
               </li>
             </ul>

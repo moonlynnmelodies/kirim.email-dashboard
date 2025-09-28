@@ -32,7 +32,7 @@ export default function Popup({ isOpen, onClose, title, children, footer }: Popu
 
       {/* modal */}
       <div
-        className="relative z-10 w-full max-w-md bg-white rounded-lg shadow-lg p-4"
+        className="relative z-10 w-full max-w-4xl bg-white rounded-lg shadow-lg p-4"
         onMouseDown={(e) => e.stopPropagation()} // stop closing when clicking inside
       >
         <div className="flex items-center justify-between mb-3">
