@@ -1,24 +1,34 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Popup from "../../components/Popup";
+import { sampleData } from "../../data/sampleData";
 
 const InvoiceDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [isOpen, setIsOpen] = useState(false);
 
-  // dummy invoice
-  const invoice = {
-    id,
-    invoiceId: `INV-00${id}`,
-    domain: "example.com",
-    package: "Business Plan",
-    billingPeriod: "Jan 2025 - Dec 2025",
-    price: "$200",
-    paymentMethod: "Credit Card",
-    status: "Paid",
-    dueDate: "2025-01-31",
-    proof: "IMG 001",
-  };
+
+
+   ////// search data in sampleData /////////////////
+   const organization = sampleData.find(org =>
+    org.domains.some(domain =>
+      domain.invoices.some(inv => inv.invoiceId === id)
+    )
+  );
+
+  const domain = organization?.domains.find(d =>
+    d.invoices.some(inv => inv.invoiceId === id)
+  );
+
+  const invoice = domain?.invoices.find(inv => inv.invoiceId === id);
+
+  if (!invoice || !domain || !organization) {
+    return <p className="p-4 text-red-500">Invoice not found</p>;
+  }
+  ///////////////// search data in sampleData /////////////////
+
+
+
 
   return (
     <div>
@@ -73,9 +83,9 @@ const InvoiceDetail: React.FC = () => {
           <thead>
             <tr>
               <td colSpan={10}>
-                <h1 className="text-2xl font-bold mb-5">Invoice {invoice.invoiceId}</h1>
+                <h1 className="text-2xl font-bold mb-5"> Domain {domain.domain} ({domain.mailbox})</h1>
                 <div className="flex justify-between mb-6">
-                  <p className="text-gray-600 text-sm">Manage invoice details.</p>
+                  <p className="text-gray-600 text-sm">Manage invoice details of {domain.domain}.</p>
                   <button className="px-3 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 hover:shadow-lg transition">
                     Add New
                   </button>
@@ -84,13 +94,12 @@ const InvoiceDetail: React.FC = () => {
             </tr>
 
             <tr className="text-left capitalize">
-              <th>Invoice ID</th>
-              <th>Domain</th>
-              <th>Package</th>
+              <th>Mailbox</th>
+              <th>Invoice #</th>
               <th>Billing Period</th>
+              <th>Package</th>
               <th>Price</th>
               <th>Payment Method</th>
-              <th>Status</th>
               <th>Due Date</th>
               <th>Proof</th>
               <th>Action</th>
@@ -103,15 +112,14 @@ const InvoiceDetail: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            <tr key={invoice.id} className="hover:bg-gray-50">
+            <tr key={invoice.invoiceId} className="hover:bg-gray-50">
+              <td className="py-2">{domain.mailbox}</td>
               <td className="py-2">{invoice.invoiceId}</td>
-              <td className="py-2">{invoice.domain}</td>
-              <td className="py-2">{invoice.package}</td>
-              <td className="py-2">{invoice.billingPeriod}</td>
-              <td className="py-2">{invoice.price}</td>
-              <td className="py-2">{invoice.paymentMethod}</td>
-              <td className="py-2">{invoice.status}</td>
-              <td className="py-2">{invoice.dueDate}</td>
+              <td className="py-2">{domain.billingPeriod}</td>
+              <td className="py-2">{domain.package}</td>
+              <td className="py-2">{domain.storageUsed}</td>
+              <td className="py-2">{domain.paymentMethod}</td>
+              <td className="py-2">{domain.dueDate}</td>
               <td className="py-2">{invoice.proof}</td>
               <td className="py-2">
                 <div className="flex justify-start">
@@ -460,7 +468,7 @@ const InvoiceDetail: React.FC = () => {
 
 
 
-          <p><strong>Invoice ID:</strong> {invoice.invoiceId}</p>
+          {/* <p><strong>Invoice ID:</strong> {invoice.invoiceId}</p>
           <p><strong>Domain:</strong> {invoice.domain}</p>
           <p><strong>Package:</strong> {invoice.package}</p>
           <p><strong>Billing Period:</strong> {invoice.billingPeriod}</p>
@@ -468,7 +476,7 @@ const InvoiceDetail: React.FC = () => {
           <p><strong>Payment Method:</strong> {invoice.paymentMethod}</p>
           <p><strong>Status:</strong> {invoice.status}</p>
           <p><strong>Due Date:</strong> {invoice.dueDate}</p>
-          <p><strong>Proof:</strong> {invoice.proof}</p>
+          <p><strong>Proof:</strong> {invoice.proof}</p> */}
         </div>
       </Popup>
     </div>

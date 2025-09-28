@@ -10,30 +10,60 @@ import { sampleData } from "../../data/sampleData";
 const Invoice: React.FC = () => {
   //dropdown
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
 
 
-  const [invoiceList, setInvoiceList] = useState([
-    {
-      id: 1,
-      invoiceId: "INV-001",
-      domain: "mycompany.com",
-      package: "Business Plan",
-      billingPeriod: "Jan 2025 - Dec 2025",
-      price: "$200",
-      status: "Paid",
-      dueDate: "2025-01-31",
-    },
-    {
-      id: 2,
-      invoiceId: "INV-002",
-      domain: "example.com",
-      package: "Starter Plan",
-      billingPeriod: "Jan 2025 - Jun 2025",
-      price: "$80",
-      status: "Unpaid",
-      dueDate: "2025-02-15",
-    },
-  ]);
+  // const [invoiceList, setInvoiceList] = useState([
+  //   {
+  //     id: 1,
+  //     domain: "mycompany.com",
+  //     mailboxCount: "20/50",
+  //     storageUsed: "10GB/50GB",
+  //     status: "Active",
+  //     nextBilling: "2025-01-31",
+  //   },
+  //   {
+  //     id: 2,
+  //     domain: "itesmevelynn.com",
+  //     mailboxCount: "20/50",
+  //     storageUsed: "10GB/50GB",
+  //     status: "Active",
+  //     nextBilling: "2025-01-31",
+  //   },
+  //   {
+  //     id: 3,
+  //     domain: "itsuuuu.com",
+  //     mailboxCount: "20/50",
+  //     storageUsed: "10GB/50GB",
+  //     status: "Active",
+  //     nextBilling: "2025-01-31",
+  //   },
+  // ]);
+
+  //  take all necessary data from sampleData
+  const [invoiceList, setInvoiceList] = useState(
+    sampleData.flatMap((org) =>
+      org.domains.map((d) => ({
+        id: d.id,
+        organization: org.organization,
+        domain: d.domain,
+        eachMailboxCount: d.eachMailboxCount || "-",
+        storageUsed: d.storageUsed,
+        status: d.paymentStatus,
+        nextBilling: d.nextBilling,
+      }))
+    )
+  );
+
+   ////////////// dropdown search filter ///////////////////
+   const [selectedOrg, setSelectedOrg] = useState<string | null>(null);
+
+   // filter berdasarkan dropdown
+   const filteredInvoices = selectedOrg
+     ? invoiceList.filter((inv) => inv.organization === selectedOrg)
+     : invoiceList;
+   ////////////// dropdown search filter ///////////////////
+
 
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,44 +71,43 @@ const Invoice: React.FC = () => {
 
   // form state
   const [formData, setFormData] = useState({
-    invoiceId: "",
-    domain: "",
-    package: "",
-    billingPeriod: "",
-    price: "",
-    status: "Unpaid",
-    dueDate: "",
+      domain: "",
+      eachMailboxCount: "",
+      storageUsed: "",
+      status: "Unpaid",
+      nextBilling: "",
   });
 
-  const totalItems = invoiceList.length;
+
+  const totalItems = filteredInvoices.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = invoiceList.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = filteredInvoices.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
+
 
   const handleAddInvoice = () => {
-    if (!formData.invoiceId.trim() || !formData.domain.trim()) return;
+    if (!formData.domain.trim()) return;
 
     const newInvoice = {
-      id: Date.now(),
+      id: Date.now().toString(),
+      organization: selectedOrg || "Unknown Org",
       ...formData,
     };
 
     setInvoiceList((prev) => [...prev, newInvoice]);
     setFormData({
-      invoiceId: "",
       domain: "",
-      package: "",
-      billingPeriod: "",
-      price: "",
+      eachMailboxCount: "",
+      storageUsed: "",
       status: "Unpaid",
-      dueDate: "",
+      nextBilling: "",
     });
     setIsOpen(false);
   };
 
-
-
-  // const [billingListState, setBillingListState] = useState(sampleData);
 
   return (
     <div>
@@ -119,26 +148,12 @@ const Invoice: React.FC = () => {
           options={sampleData.map(b => b.organization)}
           placeholder="Please choose an organization"
           onSelect={(value) => {
+            setSelectedOrg(value);
             console.log("Selected:", value);
-            // kalau mau update state dropdown lain bisa di sini
             setIsDropdownOpen(false);
           }}
         />
-
-        {/* <Dropdown>
-          <DropdownButton onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-            Options
-            <ChevronDownIcon className="w-4 h-4 ml-2" />
-          </DropdownButton>
-          {isDropdownOpen && (
-            <DropdownMenu>
-              <DropdownItem onClick={() => console.log("View")}>View</DropdownItem>
-              <DropdownItem onClick={() => console.log("Edit")}>Edit</DropdownItem>
-              <DropdownItem onClick={() => console.log("Delete")}>Delete</DropdownItem>
-            </DropdownMenu>
-          )}
-        </Dropdown> */}
-      </div>
+        </div>
 
 
 
@@ -162,13 +177,11 @@ const Invoice: React.FC = () => {
             </tr>
 
             <tr className="text-left capitalize">
-              <th>Invoice ID</th>
               <th>Domain</th>
-              <th>Package</th>
-              <th>Billing Period</th>
-              <th>Price</th>
+              <th>Mailbox Count</th>
+              <th>Storage Used</th>
               <th>Status</th>
-              <th>Due Date</th>
+              <th>Next Billing</th>
               <th>Action</th>
             </tr>
 
@@ -184,7 +197,7 @@ const Invoice: React.FC = () => {
                 <tr key={inv.id} className="hover:bg-gray-50">
                   <td className="px-4 py-2 flex items-center gap-2">
                         {/* Invoice ID */}
-                        <span>{inv.invoiceId}</span>
+                        <span>{inv.domain}</span>
 
                         {/* Link ke detail */}
                         <Link to={`/invoice/${inv.id}`}>
@@ -205,12 +218,11 @@ const Invoice: React.FC = () => {
                         </Link>
                         </td>
 
-                  <td className="py-2">{inv.domain}</td>
-                  <td className="py-2">{inv.package}</td>
-                  <td className="py-2">{inv.billingPeriod}</td>
-                  <td className="py-2">{inv.price}</td>
-                  <td className="py-2">{inv.status}</td>
-                  <td className="py-2">{inv.dueDate}</td>
+                        {/* <td>{inv.domain}</td> */}
+                        <td>{inv.eachMailboxCount}</td>
+                        <td>{inv.storageUsed}</td>
+                        <td>{inv.status}</td>
+                        <td>{inv.nextBilling}</td>
                   <td className="py-2">
                     <div className="flex justify-start">
 
@@ -330,13 +342,6 @@ const Invoice: React.FC = () => {
         <div className="flex flex-col gap-3">
           <input
             type="text"
-            placeholder="Invoice ID"
-            value={formData.invoiceId}
-            onChange={(e) => setFormData({ ...formData, invoiceId: e.target.value })}
-            className="border rounded p-2 text-sm"
-          />
-          <input
-            type="text"
             placeholder="Domain"
             value={formData.domain}
             onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
@@ -344,23 +349,16 @@ const Invoice: React.FC = () => {
           />
           <input
             type="text"
-            placeholder="Package"
-            value={formData.package}
-            onChange={(e) => setFormData({ ...formData, package: e.target.value })}
+            placeholder="Mailbox Count"
+            value={formData.eachMailboxCount}
+            onChange={(e) => setFormData({ ...formData, eachMailboxCount: e.target.value })}
             className="border rounded p-2 text-sm"
           />
           <input
             type="text"
-            placeholder="Billing Period"
-            value={formData.billingPeriod}
-            onChange={(e) => setFormData({ ...formData, billingPeriod: e.target.value })}
-            className="border rounded p-2 text-sm"
-          />
-          <input
-            type="text"
-            placeholder="Price"
-            value={formData.price}
-            onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+            placeholder="Storage Used"
+            value={formData.storageUsed}
+            onChange={(e) => setFormData({ ...formData, storageUsed: e.target.value })}
             className="border rounded p-2 text-sm"
           />
           <select
@@ -373,8 +371,8 @@ const Invoice: React.FC = () => {
           </select>
           <input
             type="date"
-            value={formData.dueDate}
-            onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
+            value={formData.nextBilling}
+            onChange={(e) => setFormData({ ...formData, nextBilling: e.target.value })}
             className="border rounded p-2 text-sm"
           />
         </div>

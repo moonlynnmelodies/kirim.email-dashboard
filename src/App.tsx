@@ -33,8 +33,8 @@ const App: React.FC = () => {
              <Route path="/mailbox/management:id" element={<MailboxDetail />} />
              <Route path="/security/management" element={<Security />} />
              <Route path="/monitoring-and-reports/management" element={<MonitoringAndReports />} />
-             <Route path="/invoice/invoice:id" element={<InvoiceDetail />} />
              <Route path="/billing/invoice" element={<Invoice />} />
+             <Route path="/invoice/:id" element={<InvoiceDetail />} />
              <Route path="/billing/management" element={<Billing />} />
              <Route path="/billing/management/:id" element={<ManagementDetail />} />
              <Route path="/developer-menu/account-setting" element={<DeveloperMenu />} />

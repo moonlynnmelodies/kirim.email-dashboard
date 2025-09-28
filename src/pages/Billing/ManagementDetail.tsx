@@ -53,9 +53,9 @@ const ManagementDetail: React.FC = () => {
 
 
             <tr className="text-left capitalize">
-              <th>Invoice #</th>
-              <th>Package</th>
-              <th>Domain</th>
+              <th>Invoice ID</th>
+              <th>Date</th>
+              <th>D</th>
               <th>Mailbox</th>
               <th>Status</th>
               <th>Next Billing</th>
