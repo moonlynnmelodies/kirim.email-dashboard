@@ -8,37 +8,9 @@ import { sampleData } from "../../data/sampleData";
 
 
 const Invoice: React.FC = () => {
+  
   //dropdown
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
-
-
-  // const [invoiceList, setInvoiceList] = useState([
-  //   {
-  //     id: 1,
-  //     domain: "mycompany.com",
-  //     mailboxCount: "20/50",
-  //     storageUsed: "10GB/50GB",
-  //     status: "Active",
-  //     nextBilling: "2025-01-31",
-  //   },
-  //   {
-  //     id: 2,
-  //     domain: "itesmevelynn.com",
-  //     mailboxCount: "20/50",
-  //     storageUsed: "10GB/50GB",
-  //     status: "Active",
-  //     nextBilling: "2025-01-31",
-  //   },
-  //   {
-  //     id: 3,
-  //     domain: "itsuuuu.com",
-  //     mailboxCount: "20/50",
-  //     storageUsed: "10GB/50GB",
-  //     status: "Active",
-  //     nextBilling: "2025-01-31",
-  //   },
-  // ]);
 
   //  take all necessary data from sampleData
   const [invoiceList, setInvoiceList] = useState(
@@ -200,7 +172,8 @@ const Invoice: React.FC = () => {
                         <span>{inv.domain}</span>
 
                         {/* Link ke detail */}
-                        <Link to={`/invoice/${inv.id}`}>
+                        <Link to={`/billing/invoice/${inv.id}`}>
+
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -227,7 +200,7 @@ const Invoice: React.FC = () => {
                     <div className="flex justify-start">
 
                     {/* View button */}
-                    <Link to={`/invoice/${inv.id}`}>
+                    <Link to={`/billing/invoice/${inv.id}`}>
                         <button className="text-blue-600 p-1 rounded hover:bg-gray-200 text-sm cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
