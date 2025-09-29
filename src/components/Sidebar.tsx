@@ -159,6 +159,15 @@ const Sidebar = () => {
                   Management
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/security/authentication"
+                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                >
+                  <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
+                  Authentication
+                </Link>
+              </li>
             </ul>
           )}
         </li>
@@ -288,20 +297,11 @@ const Sidebar = () => {
             <ul className="ml-4 mt-1 space-y-1">
               <li>
                 <Link
-                  to="/developer-menu/account-setting"
+                  to="/developer-menu/accounts"
                   className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
-                  Account Setting
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/menu/new"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
-                >
-                  <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
-                  Register
+                  Accounts
                 </Link>
               </li>
 
