@@ -56,6 +56,9 @@
 // ];
 
 // src/data/sampleData.ts
+// domain == mailbox
+
+
 export const sampleData = [
   { 
     id: 1, 
@@ -73,9 +76,12 @@ export const sampleData = [
         package: "Business Plan",
         billingPeriod: "Jan 25 - Jan 26",
         domMailboxCount: "30/100",
-        storageUsed: "30GB/150GB",
+        domStorageUsed: "30GB/150GB",
+        mailStorageUsed:"2GB/5GB",
         paymentMethod: "Credit Card",
         paymentStatus: "Paid",
+        lastPayment:"2024-01-30",
+        nextBilling:"2026-01-01",
         domStatus:"Active",
         expiryDate: "2025-01-31",
         // dueDate: "2025-01-31",
@@ -93,9 +99,12 @@ export const sampleData = [
         package: "Starter Plan",
         billingPeriod: "Jan 25 - Jan 26",
         domMailboxCount: "20/100",
-        storageUsed: "20GB/150GB",
+        domStorageUsed: "20GB/150GB",
+        mailStorageUsed:"2GB/5GB",
         paymentMethod: "PayPal",
         paymentStatus: "Unpaid",
+        lastPayment:"2024-01-30",
+        nextBilling:"2026-01-01",
         expiryDate: "2025-01-31",
         domStatus:"Active",
         // dueDate: "2025-01-31",
@@ -125,9 +134,12 @@ export const sampleData = [
         package: "Starter Plan",
         billingPeriod: "Jun 25 - Jun 26",
         domMailboxCount: "10/10",
-        storageUsed: "5GB/10GB",
+        domStorageUsed: "5GB/10GB",
+        mailStorageUsed:"2GB/5GB",
         paymentMethod: "Bank Transfer",
         paymentStatus: "Paid",
+        lastPayment:"2024-01-30",
+        nextBilling:"2026-01-01",
         domStatus:"Active",
         expiryDate: "2025-06-15",
         // dueDate: "2025-06-15",
