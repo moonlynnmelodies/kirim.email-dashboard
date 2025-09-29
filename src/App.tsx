@@ -3,8 +3,8 @@ import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Domain from "./pages/Domain/Domain";
 import NewDomain from "./pages/Domain/NewDomain"
-import Mailbox from "./pages/Mailbox";
-import MailboxDetail from "./pages/MailboxDetail";
+import Mailbox from "./pages/Mailbox/Mailbox";
+import MailboxDetail from "./pages/Mailbox/MailboxDetail";
 import Security from "./pages/Security/Management";
 import MonitoringAndReports from "./pages/MonitoringAndReports/Management";
 import Invoice from "./pages/Billing/Invoice";

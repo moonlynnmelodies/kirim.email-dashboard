@@ -61,9 +61,10 @@ export const sampleData = [
     id: 1, 
     organization: "PT. Evelyn", 
     package: "Business Plan", 
-    orgMailboxCount: "50/200", 
+    mailboxTotal: "50/200", 
+    storageUsed: "50GB/300GB", 
     orgStatus: "Active", 
-    nextEarliestBilling: "2026-01-31",
+    // expiryDate: "2026-01-31",
     domains: [
       { 
         id: "org1-d1", 
@@ -71,12 +72,13 @@ export const sampleData = [
         mailbox: "admin@evelyn.com",
         package: "Business Plan",
         billingPeriod: "Jan 25 - Jan 26",
-        eachMailboxCount: "20/50",
-        storageUsed: "10GB/50GB",
+        domMailboxCount: "30/100",
+        storageUsed: "30GB/150GB",
         paymentMethod: "Credit Card",
         paymentStatus: "Paid",
-        nextBilling: "2025-01-31",
-        dueDate: "2025-01-31",
+        domStatus:"Active",
+        expiryDate: "2025-01-31",
+        // dueDate: "2025-01-31",
         invoices: [
           { 
             invoiceId: "INV-001",
@@ -90,12 +92,13 @@ export const sampleData = [
         mailbox: "info@evelyn.id",
         package: "Starter Plan",
         billingPeriod: "Jan 25 - Jan 26",
-        eachMailboxCount: "30/50",
-        storageUsed: "15GB/50GB",
+        domMailboxCount: "20/100",
+        storageUsed: "20GB/150GB",
         paymentMethod: "PayPal",
         paymentStatus: "Unpaid",
-        nextBilling: "2025-01-31",
-        dueDate: "2025-01-31",
+        expiryDate: "2025-01-31",
+        domStatus:"Active",
+        // dueDate: "2025-01-31",
         invoices: [
           { 
             invoiceId: "INV-002",
@@ -110,9 +113,10 @@ export const sampleData = [
     id: 2, 
     organization: "PT. Diva", 
     package: "Starter Plan", 
-    orgMailboxCount: "10/50", 
+    mailboxTotal: "10/50", 
+    storageUsed: "50GB/200GB", 
     orgStatus: "Unpaid", 
-    nextEarliestBilling: "2025-06-15",
+    // expiryDate: "2025-06-15",
     domains: [
       { 
         id: "org2-d1", 
@@ -120,12 +124,13 @@ export const sampleData = [
         mailbox: "admin@diva.co.id",
         package: "Starter Plan",
         billingPeriod: "Jun 25 - Jun 26",
-        eachMailboxCount: "10/10",
+        domMailboxCount: "10/10",
         storageUsed: "5GB/10GB",
         paymentMethod: "Bank Transfer",
         paymentStatus: "Paid",
-        nextBilling: "2025-06-15",
-        dueDate: "2025-06-15",
+        domStatus:"Active",
+        expiryDate: "2025-06-15",
+        // dueDate: "2025-06-15",
         invoices: [
           { 
             invoiceId: "INV-003",

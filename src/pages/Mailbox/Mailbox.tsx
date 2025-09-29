@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Popup from "../components/Popup";
+import Popup from "../../components/Popup";
 
 const Mailbox: React.FC = () => {
   const [mailboxList, setMailboxList] = useState([
@@ -130,7 +130,7 @@ const Mailbox: React.FC = () => {
                       <Link to={`/mailbox/${m.id}`}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
+                          fill="none" 
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
                           stroke="currentColor"
