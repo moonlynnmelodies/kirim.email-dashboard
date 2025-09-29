@@ -33,6 +33,10 @@ export const sampleData = [
             securityStatus: "Enabled",
             createdAt:"2025-09-29 10:30",
             role:"Client",
+            activityLogs: [
+              { id: "a1", user: "admin@evelyn.com", activity: "Login", timestamp: "2025-09-29 09:00" },
+              { id: "a2", user: "info@evelyn.id", activity: "Password Change", timestamp: "2025-09-29 09:30" },
+            ]        
           }
         ],
         invoices: [
@@ -63,6 +67,10 @@ export const sampleData = [
             securityStatus: "Enabled",
             role:"Client",
             createdAt:"2025-09-29 10:30",
+            activityLogs: [
+              { id: "a1", user: "admin@evelyn.com", activity: "Login", timestamp: "2025-09-29 09:00" },
+              { id: "a2", user: "info@evelyn.id", activity: "Password Change", timestamp: "2025-09-29 09:30" },
+            ]        
           }
         ],
         invoices: [
@@ -105,6 +113,10 @@ export const sampleData = [
             securityStatus: "Enabled",
             createdAt:"2025-09-29 10:30",
             role:"Client",
+            activityLogs: [
+              { id: "a1", user: "admin@evelyn.com", activity: "Login", timestamp: "2025-09-29 09:00" },
+              { id: "a2", user: "info@evelyn.id", activity: "Password Change", timestamp: "2025-09-29 09:30" },
+            ]        
           }
         ],
         invoices: [

@@ -14,6 +14,7 @@ import Billing from "./pages/Billing/Management";
 import ManagementDetail from "./pages/Billing/ManagementDetail";
 // import DeveloperMenu from "./pages/DeveloperMenu/AccountSetting";
 import Accounts from "./pages/DeveloperMenu/Accounts";
+import ActivityLog from "./pages/DeveloperMenu/ActivityLog";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
@@ -38,6 +39,7 @@ const App: React.FC = () => {
              <Route path="/billing/management" element={<Billing />} />
              <Route path="/billing/management/:id" element={<ManagementDetail />} />
              <Route path="/developer-menu/accounts" element={<Accounts />} />
+             <Route path="/developer-menu/activity-logs" element={<ActivityLog />} />
              {/* <Route path="/developer-menu/account-setting" element={<Accounts />} /> */}
            </Routes>
          </div>

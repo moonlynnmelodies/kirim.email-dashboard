@@ -317,11 +317,11 @@ const Sidebar = () => {
 
               <li>
                 <Link
-                  to="/menu/new"
+                  to="/developer-menu/activity-logs"
                   className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
-                  Log Activity
+                    Activity Log
                 </Link>
               </li>
             </ul>
