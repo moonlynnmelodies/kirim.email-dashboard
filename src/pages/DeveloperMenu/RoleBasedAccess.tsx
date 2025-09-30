@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Popup from "../../components/Popup";
+import Button from "../../components/Button";
 import DropdownSearch from "../../components/DropdownSearch";
 import { roleData } from "../../data/roleData";
 
@@ -130,12 +131,9 @@ const RoleBasedAccess: React.FC = () => {
                 <h1 className="text-2xl font-bold mb-5">Role Access</h1>
                 <div className="flex justify-between mb-6">
                   <p className="text-gray-600 text-sm">Manage role-based access.</p>
-                  <button
-                    onClick={() => setIsOpen(true)}
-                    className="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 hover:shadow-lg transition"
-                  >
+                  <Button size="sm" variant="primary" onClick={() => setIsOpen(true)}>
                     Add New
-                  </button>
+                  </Button>
                 </div>
               </td>
             </tr>
@@ -250,18 +248,12 @@ const RoleBasedAccess: React.FC = () => {
         title="Add New Role"
         footer={
           <div className="flex justify-end gap-2">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="px-3 py-1 rounded border text-sm cursor-pointer"
-            >
+            <Button size="sm" variant="secondary" onClick={() => setIsOpen(false)}>
               Cancel
-            </button>
-            <button
-              onClick={handleAddRole}
-              className="cursor-pointer px-3 py-1 rounded bg-blue-600 text-white text-sm hover:bg-blue-700"
-            >
+            </Button>
+            <Button size="sm" variant="primary" onClick={handleAddRole}>
               Save
-            </button>
+            </Button>
           </div>
         }
       >

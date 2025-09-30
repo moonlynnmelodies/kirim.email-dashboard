@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Popup from "../../components/Popup";
+import Button from "../../components/Button";
 import { Dropdown, DropdownButton, DropdownItem, DropdownMenu } from '../../components/Dropdown';
 import DropdownSearch from "../../components/DropdownSearch";
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
@@ -19,8 +20,8 @@ const Invoice: React.FC = () => {
         id: d.id,
         organization: org.organization,
         domain: d.domain,
-        eachMailboxCount: d.eachMailboxCount || "-",
-        storageUsed: d.storageUsed,
+        eachMailboxCount: d.domMailboxCount || "-",
+        storageUsed: d.domStorageUsed,
         status: d.paymentStatus,
         nextBilling: d.nextBilling,
       }))
@@ -138,12 +139,9 @@ const Invoice: React.FC = () => {
                 <h1 className="text-2xl font-bold mb-5">Invoice</h1>
                 <div className="flex justify-between mb-6">
                   <p className="text-gray-600 text-sm">Manage invoices.</p>
-                  <button
-                    onClick={() => setIsOpen(true)}
-                    className="px-3 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 hover:shadow-lg transition"
-                  >
+                  <Button size="sm" variant="primary" onClick={() => setIsOpen(true)}>
                     Add New
-                  </button>
+                  </Button>
                 </div>
               </td>
             </tr>
@@ -297,18 +295,12 @@ const Invoice: React.FC = () => {
         title="Add New Invoice"
         footer={
           <div className="flex justify-end gap-2">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="px-3 py-1 rounded border text-sm"
-            >
+            <Button size="sm" variant="secondary" onClick={() => setIsOpen(false)}>
               Cancel
-            </button>
-            <button
-              onClick={handleAddInvoice}
-              className="px-3 py-1 rounded bg-blue-600 text-white text-sm hover:bg-blue-700"
-            >
+            </Button>
+            <Button size="sm" variant="primary" onClick={handleAddInvoice}>
               Save
-            </button>
+            </Button>
           </div>
         }
       >
