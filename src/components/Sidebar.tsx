@@ -11,7 +11,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-64 bg-white text-black shadow-md h-screen p-4">
+    <div className="w-64 bg-gray-80 text-black shadow-md h-screen p-4">
       {/* <h2 className="text-xl font-bold mb-6">Kirim.Email</h2> */}
       <div className="flex justify-center items-center mb-7">
         <img
@@ -34,7 +34,7 @@ const Sidebar = () => {
             to="/dashboard"
             className={({ isActive }) =>
               `flex items-center p-2 rounded cursor-pointer ${
-                isActive ? "text-[#00A6F4]" : "text-black"
+                isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) bg-white hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
               }`
             }
           >
@@ -50,7 +50,7 @@ const Sidebar = () => {
         <li>
           <button
             onClick={() => toggleDropdown("domain")}
-            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+            className="w-full flex justify-between items-center p-2 hover:bg-[#0b2656]/90 hover:text-white  rounded cursor-pointer"
           >
             <span className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="size-4 mr-3">
@@ -78,7 +78,7 @@ const Sidebar = () => {
                   to="/domain/management"
                   className={({ isActive }) =>
                     `flex items-center p-2 rounded cursor-pointer ${
-                      isActive ? "text-[var(--color-primary)]" : "text-black"
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) bg-white hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
                     }`
                   }
                 >
@@ -103,7 +103,7 @@ const Sidebar = () => {
         <li>
           <button
             onClick={() => toggleDropdown("mailbox")}
-            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+            className="w-full flex justify-between items-center p-2 hover:bg-[#0b2656]/90 hover:text-white  rounded cursor-pointer"
           >
             <span className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
@@ -127,13 +127,17 @@ const Sidebar = () => {
           {openDropdown === "mailbox" && (
             <ul className="ml-4 mt-1 space-y-1">
               <li>
-                <Link
+                <NavLink
                   to="/mailbox/management"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) bg-white hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Management
-                </Link>
+                </NavLink>
               </li>
               {/* <li>
                 <Link
@@ -153,7 +157,7 @@ const Sidebar = () => {
         <li>
           <button
             onClick={() => toggleDropdown("security")}
-            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+            className="w-full flex justify-between items-center p-2 hover:bg-[#0b2656]/90 hover:text-white  rounded cursor-pointer"
           >
             <span className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
@@ -178,22 +182,30 @@ const Sidebar = () => {
           {openDropdown === "security" && (
             <ul className="ml-4 mt-1 space-y-1">
               <li>
-                <Link
+              <NavLink
                   to="/security/management"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer hover:bg-[#0b2656]/90 hover:text-white ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Management
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+              <NavLink
                   to="/security/authentication"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Authentication
-                </Link>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -203,7 +215,7 @@ const Sidebar = () => {
         <li>
           <button
             onClick={() => toggleDropdown("monitoringAndReports")}
-            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+            className="w-full flex justify-between items-center p-2 hover:bg-[#0b2656]/90 hover:text-white  rounded cursor-pointer"
           >
             <span className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
@@ -228,13 +240,17 @@ const Sidebar = () => {
           {openDropdown === "monitoringAndReports" && (
             <ul className="ml-4 mt-1 space-y-1">
               <li>
-                <Link
+                <NavLink
                   to="/monitoring-and-reports/management"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer hover:bg-[#0b2656]/90 hover:text-white ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Management
-                </Link>
+                </NavLink>
               </li>
              
             </ul>
@@ -248,7 +264,7 @@ const Sidebar = () => {
         <li>
           <button
             onClick={() => toggleDropdown("billing")}
-            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+            className="w-full flex justify-between items-center p-2 hover:bg-[#0b2656]/90 hover:text-white  rounded cursor-pointer"
           >
             <span className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
@@ -272,22 +288,30 @@ const Sidebar = () => {
           {openDropdown === "billing" && (
             <ul className="ml-4 mt-1 space-y-1">
               <li>
-                <Link
+              <NavLink
                   to="/billing/management"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer hover:bg-[#0b2656]/90 hover:text-white ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Management
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+              <NavLink
                   to="/billing/invoice"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer hover:bg-[#0b2656]/90 hover:text-white ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Invoice
-                </Link>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -298,7 +322,7 @@ const Sidebar = () => {
         <li>
           <button
             onClick={() => toggleDropdown("developerMenu")}
-            className="w-full flex justify-between items-center p-2 hover:bg-blue-200 rounded cursor-pointer"
+            className="w-full flex justify-between items-center p-2 hover:bg-[#0b2656]/90 hover:text-white  rounded cursor-pointer"
           >
             <span className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
@@ -323,33 +347,45 @@ const Sidebar = () => {
           {openDropdown === "developerMenu" && (
             <ul className="ml-4 mt-1 space-y-1">
               <li>
-                <Link
+                <NavLink
                   to="/developer-menu/accounts"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer hover:bg-[#0b2656]/90 hover:text-white ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Accounts
-                </Link>
+                </NavLink>
               </li>
 
               <li>
-                <Link
+                <NavLink
                   to="/developer-menu/role-based-access"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer hover:bg-[#0b2656]/90 hover:text-white ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Role-based Access
-                </Link>
+                </NavLink>
               </li>
 
               <li>
-                <Link
+                <NavLink
                   to="/developer-menu/activity-logs"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer hover:bg-[#0b2656]/90 hover:text-white ${
+                      isActive ? "text-black shadow-lg shadow-black-800 shadow-[0_0_10px_rgba(0,0,0,0.5) hover:bg-[#0b2656]/90 hover:text-white" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
-                    Activity Log
-                </Link>
+                  Activity Log
+                </NavLink>
               </li>
             </ul>
           )}
