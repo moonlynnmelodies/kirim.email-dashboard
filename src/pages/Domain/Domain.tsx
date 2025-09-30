@@ -160,7 +160,7 @@ const Domain: React.FC = () => {
                   <p className="text-gray-600 text-sm">Manage domain data.</p>
                   <button
                     onClick={() => setIsOpen(true)}
-                    className="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 hover:shadow-lg transition"
+                    className="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-linear-to-r from-cyan-500 to-blue-500 rounded-lg shadow-md hover:bg-blue-800 hover:shadow-lg transition"
                   >
                     Add New
                   </button>

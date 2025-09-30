@@ -44,7 +44,7 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({ options, placeholder = 
   return (
     <div className="relative w-full" ref={ref}>
       <div
-        className="w-full border rounded flex items-center px-4 py-2 cursor-pointer bg-white"
+        className="w-full border border-gray-300 rounded flex items-center px-4 py-2 cursor-pointer bg-white"
         onClick={() => setIsOpen(!isOpen)}
       >
         <input
@@ -65,7 +65,7 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({ options, placeholder = 
       </div>
 
       {isOpen && filteredOptions.length > 0 && (
-        <div className="absolute left-0 w-full mt-1 bg-white border rounded shadow-lg z-50 max-h-60 overflow-auto">
+        <div className="absolute left-0 w-full mt-1 bg-white border border-gray-100 rounded-md shadow-lg z-50 max-h-60 overflow-auto">
           {filteredOptions.map((opt, idx) => (
             <div
               key={idx}

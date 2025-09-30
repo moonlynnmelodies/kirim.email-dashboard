@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 
 const Sidebar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -9,18 +11,39 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-64 bg-gray-800 text-white shadow-md h-screen p-4">
-      <h2 className="text-xl font-bold mb-6">Kirim.Email</h2>
+    <div className="w-64 bg-white text-black shadow-md h-screen p-4">
+      {/* <h2 className="text-xl font-bold mb-6">Kirim.Email</h2> */}
+      <div className="flex justify-center items-center mb-7">
+        <img
+          src="/src/assets/images/logo.png"
+          className="w-32 h-auto"
+          alt="Logo"
+        />
+      </div>
 
-      <ul className="space-y-2">
+      <ul className="space-y-2 text-md">
         <li>
-          <Link to="/dashboard" className="flex items-center p-2 hover:bg-blue-200 rounded cursor-pointer">
+          {/* <Link to="/dashboard" className="flex items-center p-2 hover:bg-blue-200 rounded cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
               <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
             </svg>
 
             Dashboard
-          </Link>
+          </Link> */}
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              `flex items-center p-2 rounded cursor-pointer ${
+                isActive ? "text-[#00A6F4]" : "text-black"
+              }`
+            }
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 mr-3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+
+            Dashboard
+          </NavLink>
         </li>
 
         {/* Domain dropdown */}
@@ -51,13 +74,17 @@ const Sidebar = () => {
           {openDropdown === "domain" && (
             <ul className="ml-4 mt-1 space-y-1">
               <li>
-                <Link
+              <NavLink
                   to="/domain/management"
-                  className="flex items-center p-2 hover:bg-blue-100 rounded cursor-pointer"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 rounded cursor-pointer ${
+                      isActive ? "text-[var(--color-primary)]" : "text-black"
+                    }`
+                  }
                 >
                   <span className="w-1 h-1 bg-gray-500 rounded-full mr-4"></span>
                   Management
-                </Link>
+                </NavLink>
               </li>
               {/* <li>
                 <Link
