@@ -336,7 +336,9 @@ function parseGbFraction(input: string): { used: number; total: number } {
 
 const Dashboard: React.FC = () => {
   // global org scope
-  const [selectedOrganization, setSelectedOrganization] = useState<string | null>(null);
+  // const [selectedOrganization, setSelectedOrganization] = useState<string | null>(null);
+  const [selectedOrg, setSelectedOrg] = useState<string | null>(null);
+  // const [searchTerm, setSearchTerm] = useState("");
 
   const {
     scopedOrganizations,
@@ -353,9 +355,12 @@ const Dashboard: React.FC = () => {
     upcomingExpiries,
     recentActivities,
   } = useMemo(() => {
-    const orgs = selectedOrganization
-      ? sampleData.filter(o => o.organization === selectedOrganization)
+    const orgs = selectedOrg
+      ? sampleData.filter(o => o.organization === selectedOrg)
       : sampleData;
+    // const orgs = selectedOrganization
+    //   ? sampleData.filter(o => o.organization === selectedOrganization)
+    //   : sampleData;
 
     const domains = orgs.flatMap(o => o.domains);
 
@@ -437,7 +442,7 @@ const Dashboard: React.FC = () => {
       upcomingExpiries: upcoming,
       recentActivities: activities,
     };
-  }, [selectedOrganization]);
+  }, [selectedOrg]);
 
   const mailboxPercent = mailboxTotal > 0 ? Math.round((mailboxUsed / mailboxTotal) * 100) : 0;
   const storagePercent = storageTotal > 0 ? Math.round((storageUsed / storageTotal) * 100) : 0;
@@ -446,7 +451,7 @@ const Dashboard: React.FC = () => {
   return (
     <div>
       {/* Top search/profile bar with global org scope */}
-      <div className="bg-white rounded-md flex justify-start items-center h-14 shadow-sm pl-4">
+      {/* <div className="bg-white rounded-md flex justify-start items-center h-14 shadow-sm pl-4">
         <svg
           className="w-4 h-4 text-gray-500 pr-1"
           xmlns="http://www.w3.org/2000/svg"
@@ -465,7 +470,7 @@ const Dashboard: React.FC = () => {
           <DropdownSearch
             options={sampleData.map(b => b.organization)}
             placeholder="Filter by organization"
-            onSelect={(value) => setSelectedOrganization(value)}
+            onSelect={(value) => setSelectedOrg(value)}
           />
         </div>
         <div className="ml-auto mr-4">
@@ -475,8 +480,43 @@ const Dashboard: React.FC = () => {
             alt="Profile"
           />
         </div>
+      </div> */}
+
+      {/* Top Profile Bar */}
+      <div className="bg-white rounded-md flex justify-start items-center h-14 shadow-sm pl-4">
+        <p className="text-bold text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Welcome 'admin@example.com'</p>
+        {/* <svg
+          className="w-4 h-4 text-gray-500 pr-1"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 20"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          />
+        </svg> */}
+        <div className="ml-auto mr-4">
+          <img
+            src="/src/assets/images/profile.png"
+            className="h-9 w-9 rounded-full object-cover cursor-pointer"
+            alt="Profile"
+          />
+        </div>
       </div>
 
+    {/* Dropdown Filter */}
+      <p className="mt-6 text-gray-500 text-sm">Select Organization</p>
+      <div className="mt-1 bg-white rounded-md flex justify-start items-center h-10 shadow-sm">
+        <DropdownSearch
+          options={sampleData.map((b) => b.organization)}
+          placeholder="Please choose an organization"
+          onSelect={(value) => setSelectedOrg(value)}
+        />
+      </div>
       
 
       {/* Headline */}
