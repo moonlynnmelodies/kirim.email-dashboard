@@ -15,7 +15,7 @@ const Sidebar = () => {
       {/* <h2 className="text-xl font-bold mb-6">Kirim.Email</h2> */}
       <div className="flex justify-center items-center mb-7">
         <img
-          src="/src/assets/images/logo.png"
+          src="/src/assets/images/Profile/eve-profile.png"
           className="w-32 h-auto"
           alt="Logo"
         />

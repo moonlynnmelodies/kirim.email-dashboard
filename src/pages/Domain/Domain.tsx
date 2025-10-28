@@ -106,39 +106,29 @@ const Domain: React.FC = () => {
   return (
     <div>
       {/* Top search bar */}
-      <div className="bg-white rounded-md flex justify-start items-center h-14 shadow-sm pl-4">
-        <svg
-          className="w-4 h-4 text-gray-500 pr-1"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 20 20"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-          />
-        </svg>
-        <input
-          type="text"
-          placeholder="Search domain..."
-          className="max-w-sm w-full rounded-lg p-2 text-sm focus:outline-none focus:ring-0"
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-            setCurrentPage(1);
-          }}
-        
+    <div className="mt-6 bg-white rounded-md flex items-center h-10 shadow-sm px-3">
+      <svg
+        className="w-4 h-4 text-gray-500 mr-2"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 20 20"
+      >
+        <path
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
         />
-        <div className="ml-auto mr-4">
-          <img
-            src="/src/assets/images/profile.png"
-            className="h-9 w-9 rounded-full object-cover cursor-pointer"
-            alt="Profile"
-          />
-        </div>
-      </div>
+      </svg>
+      <input
+        type="text"
+        placeholder="Search domain or organization..."
+        className="w-full text-sm focus:outline-none"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+    </div>
 
       {/* Dropdown Filter */}
       <p className="mt-6 text-gray-500 text-sm">Select Organization</p>
